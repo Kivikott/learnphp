@@ -1,9 +1,16 @@
 <?php
-echo "Hello, World!";
+$test = 10;
+$test= 3.1;
+$test = "Hello World";
+$test = "õpilane";
+$test = true;
+$test = false;
+$test = null;
+$test = new stdClass();
+$test->name = "mirell";
+var_dump($test);
 
-$name = "mirell kivi"
-$age = 25;
-echo $age;
-$age= $age *4*4*7
-echo $age;
+$test = [1, 2, "three", true];
+var_dump($test);
+
 ?>
