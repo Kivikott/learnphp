@@ -21,12 +21,25 @@ public function volume() {
 }
 
 }
+$num1 = 1;
+$num2 = $num1;
+$num1 = 2;
+var_dump($num1, $num2);
+
+
 
 $box1 = new Box();
-$box1->width = 10;
-$box1->lenght = 10;
-$box1->height = 30;
-$box1->open();
-var_dump($box1); 
-var_dump($box1->volume());
+$box1->width = 1;
+$box2 = $box1;
+$box2->width = 2;
+var_dump($box1, $box2);
+
+class MetalBox extends Box{
+   public $weight;
+public function mass(){
+    return $this->volume() * $this->weight;
+}
+}
+$metal1 = new MetalBox ();
+var_dump($metal1);
 
