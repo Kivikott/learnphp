@@ -1,45 +1,23 @@
 <?php
  
 class Box {
-    public $width;
-    public $height;
-    public $lenght;
-    public $isOpen = false;
-    public $hasBeenOpend = false;
+ private $w;
+private $n;
+private $l;
+
+public function __construct() {
+    var_dump('Box was created!');
+}
+
+public function volume(){
+    return $this-> w* $this->h * $this->l;
+
     
-    public function open () {
-        $this->isOpen = true;
-        $this->hasBeenOpend =true;
-    }
-
-     public function close () {
-        $this->isOpen = true;
-        }
-
-public function volume() {
-    return $this->height * $this->length * $this->width;
-}
-
-}
-$num1 = 1;
-$num2 = $num1;
-$num1 = 2;
-var_dump($num1, $num2);
-
-
-
-$box1 = new Box();
-$box1->width = 1;
-$box2 = $box1;
-$box2->width = 2;
-var_dump($box1, $box2);
-
-class MetalBox extends Box{
-   public $weight;
-public function mass(){
-    return $this->volume() * $this->weight;
 }
 }
-$metal1 = new MetalBox ();
-var_dump($metal1);
 
+$box1 = new Box(1,2,3,4);
+$box2 = new Box(4,5,6,);
+var_dump($box1,$box2);
+$box3 = clone $box2;
+echo $box1; 
