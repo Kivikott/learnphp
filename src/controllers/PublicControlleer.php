@@ -1,66 +1,33 @@
 <?php
-namespace App\Controllers;
-class PublicController {
- 
-public function index() {
-    $title = 'World';
-    $posts = [
-      [
-        'title' => 'Some world title 1',
-        'content' => 'Some world content 1',
-        'date' => 'Jan 1, 2026',
-                'author' => 'Pets',
-            ],
-            [
-              'title' => 'Some world title 2',
-              'content' => 'Some world content 2',
-              'date' => 'Nov 29, 2023',
-              'author' => 'Steve',
-            ],
-            [
-              'title' => 'Some world title 3',
-              'content' => 'Some world content 3',
-              'date' => 'May 20, 2009',
-              'author' => 'Alex',
-            ],
-            [
-              'title' => 'Some world title 4',
-              'content' => 'Some world content 4',
-              'date' => 'Sept 13, 2018',
-              'author' => 'Billie Eilish',
-            ],
-        ];
-        view('index');
-}
 
-public function us() {
-    $title = 'U.S';
-        $posts = [
-            [
-                'title' => 'Some U.S title 1',
-                'content' => 'Some U.S content 1',
-                'date' => 'Jan 1, 2026',
-                'author' => 'Pets',
-            ],
-            [
-                'title' => 'Some U.S title 2',
-                'content' => 'Some U.S content 2',
-                'date' => 'Nov 29, 2023',
-                'author' => 'Steve',
-            ],
-            [
-                'title' => 'Some U.S title 3',
-                'content' => 'Some U.S content 3',
-                'date' => 'May 20, 2009',
-                'author' => 'Alex',
-            ],
-            [
-                'title' => 'Some U.S title 4',
-                'content' => 'Some U.S content 4',
-                'date' => 'Sept 13, 2018',
-                'author' => 'Tommi sularaha',
-            ],
-        ];
-        view('us');
-}
+namespace App\Controllers;
+
+use App\Models\User;
+
+class AuthController
+{
+    public function loginForm() {}
+
+    public function login() {}
+
+    public function registerForm()
+    {
+        view('auth/register');
+    }
+
+    public function register()
+    {
+        $user = User::where('email', $_POST['email']);
+        if ($user || $_POST['password'] !== $_POST['password_confirm']) {
+            return redirect('/register');
+        }
+        $user = new User();
+        $user->name = $_POST['name'];
+        $user->email = $_POST['email'];
+        $user->password = $_POST['password'];
+        $user->save();
+        redirect('/login');
+    }
+
+    public function logout() {}
 }
